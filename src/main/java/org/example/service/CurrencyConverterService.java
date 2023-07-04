@@ -1,6 +1,6 @@
 package org.example.service;
 
-public interface ConversionesService {
+public interface CurrencyConverterService {
    public Double convertirPesoADolar(Double valor);
     public Double convertirPesoAEuro(Double valor);
     public Double convertirPesoAlibras(Double valor);

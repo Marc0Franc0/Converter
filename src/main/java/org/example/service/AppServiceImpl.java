@@ -6,7 +6,7 @@ import org.example.model.Moneda;
 import javax.swing.*;
 
 public class AppServiceImpl implements AppService {
-    private ConversionesService serviceConversiones = new ConversionesServiceImpl();
+    private CurrencyConverterService serviceConversiones = new CurrencyConverterServiceImpl();
     private  String[] conversores = { "Conversor de Moneda", "Conversor de Temperatura" };
    private  String[] tiposConversiones = {
            Main.monedaConvertir +" a Dólar",

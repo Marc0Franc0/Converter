@@ -2,7 +2,7 @@ package org.example.service;
 
 import org.example.model.Moneda;
 
-public class ConversionesServiceImpl implements ConversionesService{
+public class CurrencyConverterServiceImpl implements CurrencyConverterService {
     //Valores de la moneda teniendo en cuenta 1 peso argentino
     double valorPesoADolar = 0.0039;
     double valorPesoAEuro = 0.0036;
