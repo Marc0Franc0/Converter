@@ -9,7 +9,6 @@ import javax.swing.*;
 public class Main {
     public static String monedaConvertir = "Peso Argentino-ARS";
    private static AppService service = new AppServiceImpl();
-    private static JOptionPane jOptionPane = new JOptionPane();
     public static void main(String[] args) {
 
         //Se almacena la selección del conversor que el usuario elige
@@ -17,11 +16,11 @@ public class Main {
         /*Se verifica si la selección contiene "MONEDA" refiriendose al conversor de moneda
         * y en el caso de contener esa palabra se llega al caso de que es el conversor de monedas
         * */
-    if(seleccionConversor.toUpperCase().contains("MONEDA")){
-    ejecutarConversorMoneda();
-    }else{
-        System.out.println("No es el conversor de moneda");
-    }
+        if(seleccionConversor.toUpperCase().contains("MONEDA")){
+        ejecutarConversorMoneda();
+        }else{
+            System.out.println("No es el conversor de moneda");
+        }
 
 
         }
@@ -45,9 +44,8 @@ public class Main {
             }
 
         } catch (Exception e) {
+            service.mostrarMensajeDeError();
             e.printStackTrace();
-            jOptionPane.showMessageDialog(null,
-                    "Valor ingresado no válido", "Error", JOptionPane.ERROR_MESSAGE);
 
         }
     }

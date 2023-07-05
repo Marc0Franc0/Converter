@@ -157,6 +157,13 @@ public class AppServiceImpl implements AppService {
                 "Programa terminado ","Message",
                 JOptionPane.INFORMATION_MESSAGE);
     }
+
+    @Override
+    public void mostrarMensajeDeError() {
+        jOptionPane.showMessageDialog(null,
+                "Valor ingresado no válido", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
     @Override
     public int consultarNuevaEjecucion(){
         return JOptionPane.showConfirmDialog(null, "¿Desea continuar?");

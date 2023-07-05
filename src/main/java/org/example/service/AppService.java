@@ -11,6 +11,7 @@ public interface AppService {
     public void mostrarConversion(String resultado, String moneda);
     public int consultarNuevaEjecucion();
     public void finalizarEjecucion();
+    public void mostrarMensajeDeError();
 
 
 
