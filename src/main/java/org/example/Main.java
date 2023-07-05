@@ -15,24 +15,35 @@ public class Main {
         * y en el caso de contener esa palabra se llega al caso de que es el conversor de monedas
         * */
         if(seleccionConversor.toUpperCase().contains("MONEDA")){
-             ejecutarConversorMoneda();
+             ejecutarConversor("MONEDA");
         }else{
-            ejecutarConversorTemperatura();
+            ejecutarConversor("TEMPERATURA");
         }
 
-
         }
-    private static void ejecutarConversorMoneda() {
+    private static void ejecutarConversor(String conversor) {
         try {
-            //Se solicita al usuario que ingrese el valor a convertir en pesos argentinos
+            //Se solicita al usuario que ingrese el valor a convertir
             Double valorConversion = service.mostrarEntradaDeValor();
-            //Se muetran los diferentes tipos de conversion
-            int tipoConversion = service.mostrarOpcionesDeConversionMonedas();
-            //Se realiza la conversión y se muestra el resultado
-            service.convertirMoneda(Conversion.builder()
-                    .tipoConversion(tipoConversion)
-                    .valorConversion(valorConversion)
-                    .build());
+            //Se verifica que conversor se selecciono
+            if(conversor.equals("MONEDA")){
+                //Se muetran los diferentes tipos de conversion
+                int tipoConversion = service.mostrarOpcionesDeConversionMonedas();
+                //Se realiza la conversión y se muestra el resultado
+                service.convertirMoneda(Conversion.builder()
+                        .tipoConversion(tipoConversion)
+                        .valorConversion(valorConversion)
+                        .build());
+            }else{
+                //Se muetran los diferentes tipos de conversion
+                int tipoConversion = service.mostrarOpcionesDeConversionTemperaturas();
+                //Se realiza la conversión y se muestra el resultado
+                service.convertirTemperatura(Conversion.builder()
+                        .tipoConversion(tipoConversion)
+                        .valorConversion(valorConversion)
+                        .build());
+
+            }
             //Se consulta al usuario si desea continuar
             int finalizar = service.consultarNuevaEjecucion();
             //Diferentes llamados a metodos de acuerdo a la eleccion de continuar o no
@@ -48,31 +59,7 @@ public class Main {
         }
     }
 
-    private static void ejecutarConversorTemperatura() {
-        try {
-            //Se solicita al usuario que ingrese el valor a convertir en pesos argentinos
-            Double valorConversion = service.mostrarEntradaDeValor();
-            //Se muetran los diferentes tipos de conversion
-            int tipoConversion = service.mostrarOpcionesDeConversionTemperaturas();
-            //Se realiza la conversión y se muestra el resultado
-            service.convertirTemperatura(Conversion.builder()
-                    .tipoConversion(tipoConversion)
-                    .valorConversion(valorConversion)
-                    .build());
-            //Se consulta al usuario si desea continuar
-            int finalizar = service.consultarNuevaEjecucion();
-            //Diferentes llamados a metodos de acuerdo a la eleccion de continuar o no
-            switch (finalizar){
-                case 0 -> main(null);
-                default-> service.finalizarEjecucion();
-            }
 
-        } catch (Exception e) {
-            service.mostrarMensajeDeError();
-            e.printStackTrace();
-
-        }
-    }
 
 
 }
