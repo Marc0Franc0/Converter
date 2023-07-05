@@ -4,6 +4,7 @@ import org.example.Main;
 import org.example.model.Conversion;
 import org.example.model.Moneda;
 import javax.swing.*;
+import java.util.Arrays;
 
 public class AppServiceImpl implements AppService {
     private CurrencyConverterService serviceConversiones = new CurrencyConverterServiceImpl();
@@ -51,14 +52,16 @@ public class AppServiceImpl implements AppService {
     }
 
     @Override
-    public String mostrarOpcionesDeConversion(String monedaConvertir) {
-         return
+    public int mostrarOpcionesDeConversion(String monedaConvertir) {
+         String seleccion =
                 jOptionPane.showInputDialog
                         (null,
                                 "Elija la moneda a la que deseas convertir tu dinero",
                                 "Monedas",
                                 JOptionPane.INFORMATION_MESSAGE,null
                                 ,tiposConversiones,tiposConversiones[0]).toString();
+        return Arrays.asList(tiposConversiones).indexOf(seleccion);
+
     }
 
     @Override
@@ -66,78 +69,76 @@ public class AppServiceImpl implements AppService {
         //Se obtiene el valor ingresado por el usuario el cual va ser convertido a otro valor de otra moneda
         Double valorAconvertir = conversion.getValorConversion().getValor();
         //Se obtiene el tipo de conversión
-        String tipoConversion = conversion.getTipoConversion();
+        int tipoConversion = conversion.getTipoConversion();
 
-        //Conversión de pesos a dólar
-          if(tipoConversion.equals(tiposConversiones[0])){
-              //LLamado al método para convertir el valor
-              String resultado = serviceConversiones.convertirPesoADolar(valorAconvertir).toString();
-              //LLamado al método para mostrar el resultado
-              mostrarConversion(resultado,"dolares");
-          }
-          //Conversión de pesos a euros
-          else if (tipoConversion.equals(tiposConversiones[1])) {
-              //LLamado al método para convertir el valor
-              String resultado = serviceConversiones.convertirPesoAEuro(valorAconvertir).toString();
-              //LLamado al método para mostrar el resultado
-              mostrarConversion(resultado,"euros");
-          }
-          //Conversión de pesos a libras
-          else if (tipoConversion.equals(tiposConversiones[2])) {
-              //LLamado al método para convertir el valor
-              String resultado = serviceConversiones.convertirPesoAlibras(valorAconvertir).toString();
-              //LLamado al método para mostrar el resultado
-              mostrarConversion(resultado,"libras");
-          }
-          //Conversión de pesos a yen
-          else if (tipoConversion.equals(tiposConversiones[3])) {
-              //LLamado al método para convertir el valor
-              String resultado = serviceConversiones.convertirPesoAYen(valorAconvertir).toString();
-              //LLamado al método para mostrar el resultado
-              mostrarConversion(resultado,"yenes");
-          }
-          //Conversión de pesos a won coreano
-          else if (tipoConversion.equals(tiposConversiones[4])) {
-              //LLamado al método para convertir el valor
-              String resultado = serviceConversiones.convertirPesoAWonCoreano(valorAconvertir).toString();
-              //LLamado al método para mostrar el resultado
-              mostrarConversion(resultado,"wones");
-          }
-          //Conversión de dolar a pesos
-          else if (tipoConversion.equals(tiposConversiones[5])) {
-              //LLamado al método para convertir el valor
-              String resultado = serviceConversiones.convertirDolarAPeso(valorAconvertir).toString();
-              //LLamado al método para mostrar el resultado
-              mostrarConversion(resultado,"pesos argentinos");
-          }
-          //Conversión de euro a pesos
-          else if (tipoConversion.equals(tiposConversiones[6])) {
-              //LLamado al método para convertir el valor
-              String resultado = serviceConversiones.convertirEuroAPeso(valorAconvertir).toString();
-              //LLamado al método para mostrar el resultado
-              mostrarConversion(resultado,"pesos argentinos");
-          }
-          //Conversión de libras a pesos
-          else if (tipoConversion.equals(tiposConversiones[7])) {
-              //LLamado al método para convertir el valor
-              String resultado = serviceConversiones.convertirlibrasAPeso(valorAconvertir).toString();
-              //LLamado al método para mostrar el resultado
-              mostrarConversion(resultado,"pesos argentinos");
-          }
-          //Conversión de yen a pesos
-          else if (tipoConversion.equals(tiposConversiones[8])) {
-              //LLamado al método para convertir el valor
-              String resultado = serviceConversiones.convertirYenAPeso(valorAconvertir).toString();
-              //LLamado al método para mostrar el resultado
-              mostrarConversion(resultado,"pesos argentinos");
-          }
-          //Conversión de won coreano a pesos
-          else {
-              //LLamado al método para convertir el valor
-              String resultado = serviceConversiones.convertirWonCoreanoAPeso(valorAconvertir).toString();
-              //LLamado al método para mostrar el resultado
-              mostrarConversion(resultado,"pesos argentinos");
-          }
+        switch (tipoConversion){
+            case 0 ->{
+                //LLamado al método para convertir el valor
+                String resultado = serviceConversiones.convertirPesoADolar(valorAconvertir).toString();
+                //LLamado al método para mostrar el resultado
+                mostrarConversion(resultado,"dolares");
+            }
+            case 1 ->{
+                //LLamado al método para convertir el valor
+                String resultado = serviceConversiones.convertirPesoAEuro(valorAconvertir).toString();
+                //LLamado al método para mostrar el resultado
+                mostrarConversion(resultado,"euros");
+            }
+            case 2 ->{
+                //LLamado al método para convertir el valor
+                String resultado = serviceConversiones.convertirPesoAlibras(valorAconvertir).toString();
+                //LLamado al método para mostrar el resultado
+                mostrarConversion(resultado,"libras");
+            }
+            case 3 ->{
+                //LLamado al método para convertir el valor
+                String resultado = serviceConversiones.convertirPesoAYen(valorAconvertir).toString();
+                //LLamado al método para mostrar el resultado
+                mostrarConversion(resultado,"yenes");
+            }
+            case 4 ->{
+                //LLamado al método para convertir el valor
+                String resultado = serviceConversiones.convertirPesoAWonCoreano(valorAconvertir).toString();
+                //LLamado al método para mostrar el resultado
+                mostrarConversion(resultado,"wones");
+            }
+            case 5 ->{
+                //LLamado al método para convertir el valor
+                String resultado = serviceConversiones.convertirDolarAPeso(valorAconvertir).toString();
+                //LLamado al método para mostrar el resultado
+                mostrarConversion(resultado,"pesos argentinos");
+            }
+            case 6 ->{
+                //LLamado al método para convertir el valor
+                String resultado = serviceConversiones.convertirEuroAPeso(valorAconvertir).toString();
+                //LLamado al método para mostrar el resultado
+                mostrarConversion(resultado,"pesos argentinos");
+            }
+            case 7 ->{
+                //LLamado al método para convertir el valor
+                String resultado = serviceConversiones.convertirlibrasAPeso(valorAconvertir).toString();
+                //LLamado al método para mostrar el resultado
+                mostrarConversion(resultado,"pesos argentinos");
+            }
+            case 8 ->{
+                //LLamado al método para convertir el valor
+                String resultado = serviceConversiones.convertirYenAPeso(valorAconvertir).toString();
+                //LLamado al método para mostrar el resultado
+                mostrarConversion(resultado,"pesos argentinos");
+            }
+            case 9 ->{
+                //LLamado al método para convertir el valor
+                String resultado = serviceConversiones.convertirYenAPeso(valorAconvertir).toString();
+                //LLamado al método para mostrar el resultado
+                mostrarConversion(resultado,"pesos argentinos");
+            }
+            case 10 -> {
+                //LLamado al método para convertir el valor
+                String resultado = serviceConversiones.convertirWonCoreanoAPeso(valorAconvertir).toString();
+                //LLamado al método para mostrar el resultado
+                mostrarConversion(resultado,"pesos argentinos");
+            }
+        }
 
 
     }
@@ -150,5 +151,15 @@ public class AppServiceImpl implements AppService {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
+    @Override
+    public void finalizarEjecucion() {
+        jOptionPane.showMessageDialog(null,
+                "Programa terminado ","Message",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+    @Override
+    public int consultarNuevaEjecucion(){
+        return JOptionPane.showConfirmDialog(null, "¿Desea continuar?");
+    }
 
 }

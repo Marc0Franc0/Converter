@@ -7,7 +7,7 @@ import org.example.Main;
 @Builder
 @Getter
 public class Conversion {
-    String tipoConversion;
+    int tipoConversion;
     Moneda valorConversion;
 
 }
