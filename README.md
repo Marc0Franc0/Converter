@@ -3,6 +3,7 @@ Proyecto para realizar la conversión de una moneda local (en este caso se utili
 
 ## Características
 - Conversión de divisas
+- Conversion de unidades de temperatura
 
 ## Tecnologías
 - Java
