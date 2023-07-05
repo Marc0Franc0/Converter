@@ -8,6 +8,6 @@ import org.example.Main;
 @Getter
 public class Conversion {
     int tipoConversion;
-    Moneda valorConversion;
+    Double valorConversion;
 
 }
