@@ -1,6 +1,7 @@
 package org.example.service;
 
 public interface CurrencyConverterService {
+ public double consultarApi(String monedaBase, String monedaAConvertir);
    public Double convertirPesoADolar(Double valor);
     public Double convertirPesoAEuro(Double valor);
     public Double convertirPesoAlibras(Double valor);
