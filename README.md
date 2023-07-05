@@ -1,5 +1,5 @@
 # [Converter](https://github.com/Marc0Franc0/Converter#Converter)
-Proyecto para realizar la conversión de una moneda local (en este caso se utiliza el peso argentino) a otras o viceversa y también para la conversión de temperatura.
+Proyecto para realizar la conversión de una moneda local (en este caso se utiliza el peso argentino) a otras o viceversa y para la conversión de temperatura.
 
 ## Características
 - Conversión de divisas
