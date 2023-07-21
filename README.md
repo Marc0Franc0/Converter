@@ -33,5 +33,5 @@ cd target
 ```
 
 ```shell
- java -jar Conversor-Moneda-1.0-SNAPSHOT.jar
+ java -jar Converter-1.0.0.jar
 ```
